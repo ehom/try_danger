@@ -28,9 +28,13 @@ jobs:
           node-version: 12.x
           
       - name: yarn install
-        run: yarn install
+        run: |
+          cd danger
+          yarn install
         
       - name: Danger
-        run: yarn danger ci
+        run: |
+          cd danger
+          yarn danger ci
         env:
-          GITHUB_TOKEN ${{ secrets.DANGER_TOKEN }}
+          GITHUB_TOKEN: ${{ secrets.DANGER_TOKEN }}
